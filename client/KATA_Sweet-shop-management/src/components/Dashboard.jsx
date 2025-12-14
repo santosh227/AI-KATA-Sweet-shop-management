@@ -1,0 +1,21 @@
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
+const Dashboard = () => {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();          // clear user + localStorage
+    navigate('/login'); // go back to login page
+  };
+
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <button onClick={handleLogout}>Logout</button>
+    </div>
+  );
+};
+
+export default Dashboard;
