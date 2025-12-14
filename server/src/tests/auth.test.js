@@ -1,4 +1,3 @@
-// server/src/tests/auth.test.js
 const request = require('supertest');
 
 const BASE_URL = 'http://localhost:5000';
@@ -14,7 +13,10 @@ describe('Auth API (smoke test)', () => {
       });
 
     expect(res.statusCode).toBe(201);
-    expect(res.body).toHaveProperty('token');
+    // match your real keys here
+    expect(res.body).toHaveProperty('token_secret');
     expect(res.body).toHaveProperty('user');
+    expect(res.body.user).toHaveProperty('email');
+    expect(res.body.user).toHaveProperty('id');
   });
 });
